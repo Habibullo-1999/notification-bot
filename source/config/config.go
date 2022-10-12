@@ -7,6 +7,7 @@ import (
 	"strings"
 )
 
+// Config ...
 type Config interface {
 	Get(key string) interface{}
 	GetString(key string) string
@@ -19,6 +20,7 @@ type config struct {
 	cfg *viper.Viper
 }
 
+// New ...
 func New() Config {
 	cfg := viper.New()
 	cfg.SetConfigName(".env")
@@ -36,6 +38,7 @@ func New() Config {
 	return &config{cfg: cfg}
 }
 
+// Module ...
 var Module = fx.Provide(New)
 
 func (c *config) Get(key string) interface{} {

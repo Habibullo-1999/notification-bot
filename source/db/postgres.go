@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"github.com/Habibullo-1999/notification-bot/source/config"
 	"github.com/Habibullo-1999/notification-bot/source/logger"
-	_ "github.com/jinzhu/gorm/dialects/postgres"
 	"go.uber.org/fx"
 	"go.uber.org/zap/zapcore"
 	"gopkg.in/natefinch/lumberjack.v2"
@@ -16,6 +15,7 @@ import (
 	l "gorm.io/gorm/logger"
 )
 
+// Module ...
 var Module = fx.Options(
 	fx.Provide(NewConn),
 )
