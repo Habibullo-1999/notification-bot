@@ -40,6 +40,7 @@ func New() *Logger {
 	return &Logger{zap.New(core)}
 }
 
+// Log save log to file log
 func (l *Logger) Log(message, service, function, operation string) {
 	l.Info(message,
 		zap.String("Service", service),

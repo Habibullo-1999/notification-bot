@@ -24,6 +24,7 @@ type storage struct {
 	logger *logger.Logger
 }
 
+// Storage interface
 type Storage interface {
 	GetAllReservationLastFIveMinutes() ([]*entity.ReservationMeetingRoom, error)
 	AddSendMessageTg(sendMessage *entity.SendMessageTg) error
@@ -36,6 +37,7 @@ type Storage interface {
 	DeleteSendMessageByID(id string) error
 }
 
+// New ...
 func New(p Param) Storage {
 	s := &storage{
 		logger: p.Logger,

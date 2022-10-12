@@ -128,7 +128,7 @@ func (t *telegram) SendNotification() {
 		panic(err)
 	}
 	for _, reserv := range reserves {
-		message := tgbotapi.NewMessage(int64(reserv.TgUserId), reserv.Text)
+		message := tgbotapi.NewMessage(int64(reserv.TgUserID), reserv.Text)
 		_, err = t.bot.Send(message)
 		if err != nil {
 			t.logger.PrintError(err, "bot", "SendNotification", "NewMessage")

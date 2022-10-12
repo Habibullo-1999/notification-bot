@@ -2,7 +2,7 @@ package entity
 
 import "time"
 
-// Structure ReservationMeetingRoom
+// ReservationMeetingRoom struct
 type ReservationMeetingRoom struct {
 	ID            string     `json:"id" db:"id" `
 	UserID        string     `json:"user_id" db:"user_id"`

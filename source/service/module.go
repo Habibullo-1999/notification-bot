@@ -31,10 +31,12 @@ type service struct {
 	config  config.Config
 }
 
+// Service ...
 type Service interface {
 	WorkerAddSendMessage()
 }
 
+// New ...
 func New(p Param) Service {
 	s := &service{
 		logger:  p.Logger,
