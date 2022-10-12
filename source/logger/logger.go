@@ -5,6 +5,7 @@ import (
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 	"gopkg.in/natefinch/lumberjack.v2"
+	"runtime/debug"
 )
 
 // Module is one main modules
@@ -44,5 +45,21 @@ func (l *Logger) Log(message, service, function, operation string) {
 		zap.String("Service", service),
 		zap.String("Function", function),
 		zap.String("Operation", operation),
+	)
+}
+
+func fields(packageName, function, operation string) []zap.Field {
+	return []zap.Field{
+		zap.String("trace", string(debug.Stack())),
+		zap.String("package", packageName),
+		zap.String("function", function),
+		zap.String("operation", operation),
+	}
+}
+
+// PrintError ...
+func (l *Logger) PrintError(err error, packageName, function, operation string) {
+	l.Error(err.Error(),
+		fields(packageName, function, operation)...,
 	)
 }
