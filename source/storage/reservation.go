@@ -7,7 +7,7 @@ import (
 
 func (s *storage) GetAllReservationLastFIveMinutes() ([]*entity.ReservationMeetingRoom, error) {
 	var reservation []*entity.ReservationMeetingRoom
-	t := time.Now().Add(time.Minute * (-5)).Add(time.Hour * (5))
+	t := time.Now().Add(time.Minute * (-5)).Add(time.Hour * (-5))
 	err := s.db.Table("reservation_meeting_rooms").Where("created_at > ?", t).Scan(&reservation).Error
 	if err != nil {
 		return nil, err

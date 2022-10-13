@@ -15,8 +15,8 @@ func (s *storage) AddSendMessageTg(sendMessage *entity.SendMessageTg) error {
 
 func (s *storage) GetAllSendMessagesByActive() ([]*entity.SendMessageTg, error) {
 	var SendMessageTgs []*entity.SendMessageTg
-	t := time.Now().Add(time.Minute * (-1)).Add(time.Hour * 5)
-	err := s.db.Table("send_message_tgs").Where("status=? AND time BETWEEN  ? and ?", true, t, time.Now().Add(time.Hour*5)).Find(&SendMessageTgs).Error
+	t := time.Now().Add(time.Minute * (-1))
+	err := s.db.Table("send_message_tgs").Where("status=? AND time BETWEEN  ? and ?", true, t, time.Now()).Find(&SendMessageTgs).Error
 	if err != nil {
 		return nil, err
 	}
